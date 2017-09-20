@@ -2,20 +2,10 @@ package main
 
 import (
 	"fmt"
-	"time"
 )
 
 func main() {
 
-	//(1Write a program that prints “Hello, world!” in Japanese (using Japanese 		
-	//characters) to the screen.
-	fmt.Println("こんにちは, 世界")
-	fmt.Println("hello, world")
-	println("It says Hello World")
-	
-	//(2 Write a program that prints the current time and date to the console.
-	fmt.Println("The time is", time.Now())
-	
 	//(3Write a program that prints the numbers from 1 to 100, except for the 	
 	//following conditions. For multiples of three print “Fizz” instead of the 	
 	//number, and for the multiples of five print “Buzz”. For numbers which are	
