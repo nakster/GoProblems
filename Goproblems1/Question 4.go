@@ -9,7 +9,6 @@ import (
 
 //this main method asks for the input 
 func main(){  
-
     // Declare Variable
     var num int
 
@@ -27,27 +26,31 @@ func main(){
          fmt.Println();
     }
     
-
     fmt.Print("The sum of factorial is: ",P20(num))
+}//eomain
 
-}
-
+//function to calculate 
 func P20(n int) int {
+    //declare sum
     sum := 0;
-    digits := [200]int{};
-    digits[0] = 1;
+    //this stores the int values
+    arrayForInt := [200]int{};
+    //intialise it
+    arrayForInt[0] = 1;
+    //for loop
     for i := 2; i <= n; i++ {
-    	for j := 0; j < len(digits); j++ {
-    		digits[j] *= i;
-    		if j > 0 && digits[j - 1] > 9 {
-    			digits[j] += int(digits[j - 1] / 10);
-    			digits[j - 1] %= 10;
+    	for j := 0; j < len(arrayForInt); j++ {
+    		arrayForInt[j] *= i;
+    		if j > 0 && arrayForInt[j - 1] > 9 {
+    			arrayForInt[j] += int(arrayForInt[j - 1] / 10);
+    			arrayForInt[j - 1] %= 10;
     		}
     	}
     }
-    for i := 0; i < len(digits); i++ {
-    	sum += digits[i];
+    for i := 0; i < len(arrayForInt); i++ {
+    	sum += arrayForInt[i];
     }
+    //return the value
     return sum;
 }
 
@@ -55,7 +58,7 @@ func P20(n int) int {
 //CalculateNum is the name of the variable and float64 is the type 
 // uint64 ranges between 0 through 18446744073709551615
 // Use float64 when using big number or big calculations
-
+//variables
 var CalculateNum float64 = 1                       
 var i int
 
@@ -72,10 +75,11 @@ func Calcfactorial(num int) float64 {
 	// return from method
     return CalculateNum  
 }
-
+//variables
 var CalculateNumInt uint64 = 1                       
 var j int
 
+//this function calulates the factorial upto 20
 func CalFacOfInt(num int) uint64 {   
     if(num < 0){
         fmt.Print("Can't calculate Minus Numbers.")    

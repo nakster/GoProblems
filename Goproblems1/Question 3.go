@@ -21,7 +21,6 @@ func main() {
 		}else {
 			fmt.Println(i)
 		}
-	}//eof
-	
+	}//eof	
 	
 }//main
