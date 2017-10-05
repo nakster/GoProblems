@@ -19,7 +19,8 @@ func main() {
 	fmt.Scanf("%d ",&store[i])
   }
   
-  fmt.Println("argest and smallest elements in a list are: ",MinMax(store))
+  fmt.Print("the smallest and largest elements in a list are: ")
+  fmt.Println(MinMax(store))
   
 }
 

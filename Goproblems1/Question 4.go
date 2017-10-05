@@ -26,19 +26,19 @@ func main(){
          fmt.Println();
     }
     
-    fmt.Print("The sum of factorial is: ",P20(num))
+    fmt.Print("The sum of factorial is: ",CalSum(num))
 }//eomain
 
 //function to calculate 
-func P20(n int) int {
+func CalSum(num int) int {
     //declare sum
     sum := 0;
     //this stores the int values
-    arrayForInt := [200]int{};
+    arrayForInt := [200]int{}; 
     //intialise it
     arrayForInt[0] = 1;
     //for loop
-    for i := 2; i <= n; i++ {
+    for i := 2; i <= num; i++ {
     	for j := 0; j < len(arrayForInt); j++ {
     		arrayForInt[j] *= i;
     		if j > 0 && arrayForInt[j - 1] > 9 {
