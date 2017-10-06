@@ -1,31 +1,36 @@
+//Write a function to reverse a string in Go.
 package main
 
-import "fmt"
+import (   
+    "fmt"
+    
+)
 
-func reverse(value string) string {
-    // Convert string to rune slice.
-    // ... This method works on the level of runes, not bytes.
+func main() {
+
+    //declare variables
+    var reverse string
+
+    //ask the user for the string
+    fmt.Print("Please Enter a string to Reverse:")
+    fmt.Scanf("%s\n", &reverse)
+    fmt.Println()
+    //print out the reversed string
+    fmt.Println("The String",reverse,"is reversed into:",Reverse(reverse))
+    fmt.Println()
+
+}
+
+func Reverse(value string) string {
+    
+    // convert using runes
     data := []rune(value)
     result := []rune{}
 
-    // Add runes in reverse order.
+    // add them in reverse
     for i := len(data) - 1; i >= 0; i-- {
         result = append(result, data[i])
     }
-
-    // Return new string.
+    // Return new string
     return string(result)
-}
-
-func main() {
-    // Test our method.
-    value1 := "cat"
-    reversed1 := reverse(value1)
-    fmt.Println(value1)
-    fmt.Println(reversed1)
-
-    value2 := "abcde"
-    reversed2 := reverse(value2)
-    fmt.Println(value2)
-    fmt.Println(reversed2)
 }
