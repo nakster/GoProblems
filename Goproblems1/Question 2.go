@@ -1,5 +1,6 @@
+//Write a program that prints the current time and date to the console.
 package main
-
+//imports
 import (
 	"fmt"
 	"time"

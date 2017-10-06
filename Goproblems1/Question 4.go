@@ -42,11 +42,12 @@ func CalSum(num int) int {
     	for j := 0; j < len(arrayForInt); j++ {
     		arrayForInt[j] *= i;
     		if j > 0 && arrayForInt[j - 1] > 9 {
+                //getting the sum
     			arrayForInt[j] += int(arrayForInt[j - 1] / 10);
     			arrayForInt[j - 1] %= 10;
     		}
     	}
-    }
+    }//eof
     for i := 0; i < len(arrayForInt); i++ {
     	sum += arrayForInt[i];
     }

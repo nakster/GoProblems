@@ -7,70 +7,64 @@ package main
 import (
 	"fmt"
 	"math/rand"
-    "time"
-  
+    "time"  
 )
 
 func main() {
 
-    // Declare variables  
+    // Declare variables 
     count := 0
     var AskUser int
-	myrand := xrand(1, 20)
+	randomNum := getRandumNum(1, 20)
     var guessedNum [] int
 
 	//this for loop prints outs the results 
     for count < 20 {
         //ask user what number it may be
-        fmt.Println("Guess a number between 1 and 100.: ")
+        fmt.Print("Enter a Number Between 1 and 20 To Guess: ")
         fmt.Scanf("%d ", &AskUser)
-		//this keeps 
+		//this keeps the amount of time the user guessed 
         count++
-        //check if guess is higher or lower than random number
-        if AskUser < myrand {
-            fmt.Println("Your guess is too low.")
-        } else if AskUser > myrand {
-            fmt.Println("Your guess is too high.")
+        //check the guess and see if its higher or lower
+        if AskUser < randomNum {
+            fmt.Println("Its Too Low")
+        } else if AskUser > randomNum {
+            fmt.Println("Its Too High")
         } else {
             break
         }
-        //check if guess is in slice
+        //check if it already exits in array
         if contains(guessedNum, AskUser) == true{
-            fmt.Printf("That number has already been entered\n")
+            fmt.Printf("Already Entered Before\n")
             count--;
         } else {
-            //add guess to slice of guessed numbers
-            guessedNum = append(guessedNum, AskUser)
-            
+            //otherwise add to array/slice
+            guessedNum = append(guessedNum, AskUser)      
         }  
     }
-    if AskUser == myrand {
-        fmt.Printf("Good job! You guessed the correct number in %d tries\n", count)
+    if AskUser == randomNum {
+        fmt.Printf("You Guessed in %d tries\n", count)
     } else {
-        fmt.Printf("Nope. The number I had in mind was %d\n", myrand)
+        fmt.Printf("Nope. The number was %d\n", randomNum)
     }
 }
 
-//this generates random number between given range
+//random number generator 
 func getRandumNum(min, max int) int{
 // Random int will be different each program execution.
-// rand.Seed(time.Now().Unix())
 	rand.Seed( time.Now().UnixNano())
    	return rand.Intn(max - min) + min
-
 }
 
-//this generates random number between given range
-func xrand(min, max int) int {
-    rand.Seed(time.Now().Unix())
-    return rand.Intn(max - min) + min
-}
-//this checks slice of guessed numbers and doesnt count duplicates
+//checks for duplicates //return type boolean 
 func contains(s []int, e int) bool {
+    //iterate to find the value if contains or else
     for _, a := range s {
         if a == e {
-            return true //integer is in list
-        }
+            //if returns true its a duplicate
+            return true
+       }
     }
+    //if its not true then it wasnt asked 
     return false
 }

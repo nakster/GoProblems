@@ -2,42 +2,51 @@
 package main
 
 import (
-	"fmt"
-	
+	"fmt"	
 )
 
 func main() {
-	//create a int array of 5 ints 
+  //create a int array of 5 ints 
   var store [5]int
-  //ask user for list of values
+  //ask user for values
   fmt.Print("Please enter 5 Random Numbers\n")
   
-  //populate array with values given
+  //put the values into the array/slice
   for i:=0; i<5;i++{
 	  //ask user for array values
 	fmt.Print("Please enter number: ")
 	fmt.Scanf("%d ",&store[i])
   }
-  
-  fmt.Print("the smallest and largest elements in a list are: ")
-  fmt.Println(MinMax(store))
+  //print out the results
+  fmt.Println("The largest elements in a list is: ",Max(store))
+  fmt.Println("The Smallest elements in a list is: ",min(store))
   
 }
 
-//function to produce min and max values
-func MinMax(array [5]int) (int, int) {
-	//setting min and max to first index of array
-	var max int = array[0]
-	var min int = array[0]
-	//iterating over array to find min and max values
+//gets the min value
+func min(array [5]int) int{
+
+    //set to 0
+    var min int = array[0]
+
+    //iterates to find min value
     for _, value := range array {
-        if max < value {
-            max = value
-        }
         if min > value {
             min = value
         }
 	}
-    return min, max
+    return min
 }
+//gets the max value
+func Max(array [5]int) int {
+	//set to 0
+	var max int = array[0]
 
+	 //iterates to find max value
+    for _, value := range array {
+        if max < value {
+            max = value
+        }
+	}
+    return max
+}

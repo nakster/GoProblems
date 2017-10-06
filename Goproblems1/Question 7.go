@@ -1,69 +1,45 @@
-//Go fundamentals Problemn sheet 1
-//Author: Micheal Curley
-//Adapted from http://golangcookbook.blogspot.ie/2012/11/guess-number-game-in-golang.html
-//slice function adapted from https://stackoverflow.com/questions/10485743/contains-method-for-a-slice
-//Guessing game 
-
-//import package
+//Write a function that tests whether a string is a palindrome. A palindrome is a string that reads the same in reverse, e.g. radar.
+//http://www.golangpro.com/2016/01/check-string-palindrome-go.html
 package main
-import(
+
+import (   
     "fmt"
-    "math/rand"
-    "time"
+    "strings"
 )
 
-//this generates random number between given range
-func xrand(min, max int) int {
-    rand.Seed(time.Now().Unix())
-    return rand.Intn(max - min) + min
-}
-//this checks slice of guessed numbers and doesnt count duplicates
-func contains(s []int, e int) bool {
-    for _, a := range s {
-        if a == e {
-            return true //integer is in list
-        }
-    }
-    return false
-}
-
 func main() {
-    // Variable Declaration
-    myrand := xrand(1, 100)
-    guessTaken := 0
-    var guess int
-    var guessedNum [] int
-
-
-    //this is the while loop
-    for guessTaken < 100 {
-        //ask user for guess
-        fmt.Println("Guess a number between 1 and 100.: ")
-        fmt.Scanf("%d ", &guess)
-        guessTaken++
-        //check if guess is higher or lower than random number
-        if guess < myrand {
-            fmt.Println("Your guess is too low.")
-        } else if guess > myrand {
-            fmt.Println("Your guess is too high.")
+    //declare variables
+    var check string
+    //ask the user for the string
+    fmt.Print("Please Enter a string to check if its a palindrome:")
+    fmt.Scanf("%s\n", &check)
+    fmt.Println()
+    //this checks if its palindrome or not 
+     if palindrome(check) == true{
+            fmt.Println("YES Its A Palindrome\n")
         } else {
-            break
-        }
-        //check if guess is in slice
-        if contains(guessedNum, guess) == true{
-            fmt.Printf("That number has already been entered\n")
-            guessTaken--;
-        } else {
-            //add guess to slice of guessed numbers
-            guessedNum = append(guessedNum, guess)
-            
-        }
-       
-    }
-    if guess == myrand {
-        fmt.Printf("Good job! You guessed the correct number in %d tries\n", guessTaken)
-    } else {
-        fmt.Printf("Nope. The number I had in mind was %d\n", myrand)
-    }
+            //otherwise return no
+            fmt.Println("No Its Not A Palindrome\n")
+        }  
 }
 
+//this function checks if the string is a palindrome
+func palindrome(check string) bool{
+
+    //this converts it to lowercase 
+    check = strings.ToLower(check)
+
+    //divide the string into half
+    mid := len(check) / 2
+    last := len(check) - 1
+        
+        //for 
+        for i := 0; i < mid; i++ {
+            //this checks if they are not Palimdrome
+             if check[i] != check[last-i] {
+                return false
+             }
+        }  
+    //return true if it is
+    return true
+}
