@@ -22,7 +22,7 @@
 <div class="container">
   <h5>{{.Message}}</h5>
 
-  <form class="form-inline" method="GET" action="/guess">
+  <form class="form-inline" method="POST" action="/guess">
     <div class="form-group">
       <!--<label for="email">Email:</label>-->
       <input type="number" class="form-control" id="guessNum" placeholder="Enter a numer" name="guess" min="1" max="20">

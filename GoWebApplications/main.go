@@ -38,9 +38,6 @@ func handleGuess(w http.ResponseWriter, r *http.Request) {
 
 	}
 
-	//displays the guess
-	fmt.Println("The Guess is: ",cookie)
-
 	//assign values 
 	gues, _ := strconv.Atoi(r.FormValue("guess"))
 
@@ -66,6 +63,9 @@ func handleGuess(w http.ResponseWriter, r *http.Request) {
 		mess.NewMessage ="Please Try Agian The Guess is Too High"
 	}
 	
+	//displays the guess
+	fmt.Println("The Guess is: ",cookie)
+
 	 //this parses the html file 
 	t, err := template.ParseFiles("guess.tmpl") 
 	 //error handling 
