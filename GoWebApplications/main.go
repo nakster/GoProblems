@@ -38,7 +38,8 @@ func handleGuess(w http.ResponseWriter, r *http.Request) {
 
 	}
 
-	fmt.Println(cookie)
+	//displays the guess
+	fmt.Println("The Guess is: ",cookie)
 
 	//assign values 
 	gues, _ := strconv.Atoi(r.FormValue("guess"))
@@ -50,14 +51,6 @@ func handleGuess(w http.ResponseWriter, r *http.Request) {
 		 Message: "Guess a number between 1 and 20", Guess: gues, Winner: false}
 
 	//if the target is = to guess then declare the winner and change the target
-	/*if cookValue == gues{
-
-	 cookie = &http.Cookie{Name: "target", Value: strconv.Itoa(randomNum),Expires: time.Now().Add(72 * time.Hour),
-
-		}
-		http.SetCookie(w, cookie)
-
-	}*/
 	if cookValue == gues{
 
 		mess.NewMessage = "You have Guessed the right number"
@@ -68,9 +61,9 @@ func handleGuess(w http.ResponseWriter, r *http.Request) {
 		http.SetCookie(w, cookie)
 	
 	}else if gues < cookValue{
-	  	mess.NewMessage ="Try Again guess too low"
+	  	mess.NewMessage ="Please Try Agian The Guess is Too Low"
 	}else {
-		mess.NewMessage ="Try Again guess too high"
+		mess.NewMessage ="Please Try Agian The Guess is Too High"
 	}
 	
 	 //this parses the html file 
