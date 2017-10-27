@@ -7,11 +7,11 @@ import (
 
 //can name it anything you want i.e handlerFunc
 func handlerFunc(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(w, "Guessing game")
+	fmt.Fprint(w, "<h1>Guessing game</h1>")
 }
 
 func handlerFunc2(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(w, "New Game")
+	fmt.Fprint(w, "<h1>New Game</h1>")
 }
 
 func main() {
