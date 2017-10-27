@@ -44,7 +44,7 @@ func handleGuess(w http.ResponseWriter, r *http.Request) {
 
 
 	 //this parses the html file 
-	t, err := template.ParseFiles("guess.tmpl") 
+	t, err := template.ParseFiles("guess.html") 
 	 //error handling 
     if err != nil { 
   	  log.Print("error ", err) 
