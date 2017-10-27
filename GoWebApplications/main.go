@@ -14,7 +14,8 @@ type messagStruct struct{
 
 	Message string
 	Guess int
-	newMessage string
+	NewMessage string
+	Winner bool
 
 }
 //can name it anything you want i.e handlerFunc
@@ -42,17 +43,34 @@ func handleGuess(w http.ResponseWriter, r *http.Request) {
 	//assign values 
 	gues, _ := strconv.Atoi(r.FormValue("guess"))
 
-	//create a new variable and assign the struct and string value
-	 mess := &messagStruct{
-		 Message: "Guess a number between 1 and 20", Guess: gues}
-
-
 	cookValue, _ := strconv.Atoi(cookie.Value)
 
+	//create a new variable and assign the struct and string value
+	 mess := &messagStruct{
+		 Message: "Guess a number between 1 and 20", Guess: gues, Winner: false}
+
 	//if the target is = to guess then declare the winner and change the target
+	/*if cookValue == gues{
+
+	 cookie = &http.Cookie{Name: "target", Value: strconv.Itoa(randomNum),Expires: time.Now().Add(72 * time.Hour),
+
+		}
+		http.SetCookie(w, cookie)
+
+	}*/
 	if cookValue == gues{
 
-		
+		mess.NewMessage = "You have Guessed the right number"
+		mess.Winner = true
+
+		//set a new randon number for the game
+		cookie = &http.Cookie{Name: "target", Value: strconv.Itoa(getRandumNum(1, 20)),}
+		http.SetCookie(w, cookie)
+	
+	}else if gues < cookValue{
+	  	mess.NewMessage ="Try Again guess too low"
+	}else {
+		mess.NewMessage ="Try Again guess too high"
 	}
 	
 	 //this parses the html file 
